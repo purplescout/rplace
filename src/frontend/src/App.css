@@ -2,16 +2,17 @@
   text-align: center;
 }
 
-.wrapper {
+/* .wrapper {
   width: 100%;
   height: auto;
   overflow: hidden;
   display: grid;
-}
+} */
 
 .colorchart {
   width: auto;
   margin: auto;
+  margin-left: 50px;
 }
 
 .board {
@@ -52,8 +53,4 @@
   -moz-transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
   -o-transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.chart-content {
-  position: relative;
 }

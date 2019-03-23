@@ -1,8 +1,9 @@
 import React from "react";
+import withColorState from "../hocs/with-color-state";
 
 const ColorChart = () => {
   return (
-    <div className="chart-content row show-sm colorchart">
+    <div className="colorchart">
       <div className="color-group">
         <div className="color-block">
           <div className="js-color" style={{backgroundColor: "#A93226"}} />
@@ -71,4 +72,4 @@ const ColorChart = () => {
   );
 };
 
-export default ColorChart;
+export default withColorState(ColorChart);
