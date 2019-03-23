@@ -1,10 +1,22 @@
+/* eslint-disable */
 import React, {Component} from "react";
-import logo from "./logo.svg";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import GameOne from "./pages/gameone";
 import "./App.css";
+//---------------------------------------
+// Imports and constants
+//---------------------------------------
 
 class App extends Component {
   render() {
-    return <div className="App">yooo</div>;
+    return (
+      <Router>
+        <div>
+          <Route exact path="/" render={GameOne} />
+          {/*<Route path="/administration" render={Administration} />*/}
+        </div>
+      </Router>
+    );
   }
 }
 
