@@ -1,8 +1,6 @@
 import {compose, withState, lifecycle, withProps} from "recompose";
 
-import openSocket from "socket.io-client";
-
-const socket = openSocket("http://localhost:8000");
+import socket from "../utils/socket";
 
 const withBoard = compose(
   withState("board", "setBoard", null),
