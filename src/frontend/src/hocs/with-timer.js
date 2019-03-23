@@ -2,7 +2,7 @@ import {compose, withState, lifecycle, withProps} from "recompose";
 
 import socket from "../utils/socket";
 
-const withBoard = compose(
+const withTimer = compose(
   withState("board", "setBoard", null),
   lifecycle({
     componentDidMount() {
@@ -16,7 +16,7 @@ const withBoard = compose(
   })
 );
 
-export default withBoard;
+export default withTimer;
 
 function cellClicked(cell, color) {
   socket.emit("clickCell", {

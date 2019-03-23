@@ -2,6 +2,8 @@
 import React from "react";
 import Board from "../components/board";
 import ColorChart from "../components/colorChart";
+import LeaderBoard from "../components/leaderboard";
+//import Timer from "../components/timer";
 import withColorState from "../hocs/with-color-state";
 
 //---------------------------------------
@@ -14,6 +16,8 @@ const GameOne = (props) => {
     <div className="wrapper">
       <ColorChart setColor={setColor} color={color} />
       <Board color={color} />
+      {/*<Timer />*/}
+      <LeaderBoard />
     </div>
   );
 };
