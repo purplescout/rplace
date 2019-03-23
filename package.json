@@ -6,7 +6,7 @@
     "prettier-fix": "prettier --write src/**/*.js",
     "start-frontend": "cd src/frontend && npm run start",
     "dev-backend": "cd src/backend && npm run dev",
-    "start": "run-p dev-backend start-frontend",
+    "start": "FORCE_COLOR=1 run-p dev-backend start-frontend",
     "postinstall": "run-p install-frontend install-backend",
     "install-frontend": "cd src/frontend && npm install",
     "install-backend": "cd src/backend && npm install"
@@ -27,7 +27,9 @@
     "pretty-quick": "^1.10.0",
     "prettier": "1.15.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "^2.4.2"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
