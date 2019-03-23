@@ -38,7 +38,7 @@ const Cell = styled.div`
   width: ${({tileSize}) => tileSize}px;
   height: ${({tileSize}) => tileSize}px;
   display: inline-block;
-  margin-bottom: -3px;
+  margin-bottom: -6px;
 
   cursor: ${({disabled}) => (disabled ? "not-allowed" : "pointer")};
 
