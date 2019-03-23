@@ -40,6 +40,9 @@
 }
 
 .tile {
-  width: 2px;
-  height: 2px;
+  width: 38px;
+  height: 38px;
+  border: solid white 1px;
+  display: inline-block;
+  margin-bottom: -3px;
 }

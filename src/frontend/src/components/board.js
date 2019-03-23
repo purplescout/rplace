@@ -2,14 +2,18 @@ import React from "react";
 import withBoard from "../hocs/with-board";
 
 const Board = (props) => {
-  console.log(props);
+  console.log(1, props);
 
   return (
     <div>
-      {props.board.forEach((element) => {
-        element.forEach((tile) => {
+      {props.board.map((element) => {
+        return element.map((tile) => {
           return (
-            <div className="tile" style={`backgroundColor: ${tile.color}`} />
+            <div
+              className="tile"
+              key={tile.id}
+              style={{backgroundColor: tile.color}}
+            />
           );
         });
       })}
