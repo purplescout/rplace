@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default withBoard(App);
+export default App;

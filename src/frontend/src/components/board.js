@@ -1,7 +1,20 @@
 import React from "react";
+import withBoard from "../hocs/with-board";
 
-const Board = () => {
-  return <h1>Hej granit</h1>;
+const Board = (props) => {
+  console.log(props);
+
+  return (
+    <div>
+      {props.board.forEach((element) => {
+        element.forEach((tile) => {
+          return (
+            <div className="tile" style={`backgroundColor: ${tile.color}`} />
+          );
+        });
+      })}
+    </div>
+  );
 };
 
-export default Board;
+export default withBoard(Board);
