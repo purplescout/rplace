@@ -11,7 +11,6 @@ const withBoard = compose(
       socket.emit("getBoard");
     },
   }),
-  //withProps(console.log),
   withProps({
     cellClicked: cellClicked,
   })
@@ -20,7 +19,6 @@ const withBoard = compose(
 export default withBoard;
 
 function cellClicked(cell, color) {
-  console.log(color);
   socket.emit("clickCell", {
     ...cell,
     color,

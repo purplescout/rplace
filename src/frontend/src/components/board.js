@@ -1,6 +1,5 @@
 import React from "react";
 import withBoard from "../hocs/with-board";
-import withColorState from "../hocs/with-color-state";
 
 const Board = (props) => {
   const {board, cellClicked, color} = props;
