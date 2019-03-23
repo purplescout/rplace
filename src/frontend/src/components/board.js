@@ -1,10 +1,11 @@
 import React from "react";
 import withBoard from "../hocs/with-board";
+import withTimer from "../hocs/with-timer";
 import styled from "styled-components";
 
 const Board = (props) => {
-  const {board, cellClicked, color: selectedColor} = props;
-
+  const {board, cellClicked, color: selectedColor, timer, timerRunning} = props;
+  console.log(timerRunning);
   if (!board) {
     return null;
   }
@@ -16,7 +17,8 @@ const Board = (props) => {
       {board.map((row) => {
         return row.map((cell) => {
           const {color, id} = cell;
-          const disabled = color === selectedColor;
+          const disabled =
+            color === selectedColor || !timerRunning || timer === 0;
 
           return (
             <Cell
@@ -49,4 +51,4 @@ const Cell = styled.div`
   }
 `;
 
-export default withBoard(Board);
+export default withTimer(withBoard(Board));
