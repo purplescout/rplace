@@ -3,7 +3,6 @@ import {toast} from "react-toastify";
 
 import socket from "../utils/socket";
 
-console.log(toast.TYPE);
 const withToast = compose(
   lifecycle({
     componentDidMount() {
@@ -15,9 +14,7 @@ const withToast = compose(
 export default withToast;
 
 const defaultOptions = {
-  // className: 'black-background',
-  // bodyClassName: "grow-font-size",
-  // progressClassName: 'fancy-progress-bar'
+  pauseOnHover: false,
 };
 
 function onToast({content, options = {}}) {

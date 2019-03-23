@@ -1,5 +1,9 @@
 import {compose, withState} from "recompose";
 
-const withColorState = compose(withState("color", "setColor", "white"));
+import {COLORS} from "../constants";
+import {sample} from "lodash";
+
+const randomColor = sample(COLORS);
+const withColorState = compose(withState("color", "setColor", randomColor));
 
 export default withColorState;
