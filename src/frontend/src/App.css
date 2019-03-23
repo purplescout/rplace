@@ -31,3 +31,10 @@
     transform: rotate(360deg);
   }
 }
+
+.board {
+  width: 800px;
+  height: 800px;
+  border: solid black 2px;
+  margin: auto;
+}

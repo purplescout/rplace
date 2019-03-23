@@ -5,7 +5,7 @@ import React from "react";
 //---------------------------------------
 
 const GameOne = () => {
-  return <h1>Hello</h1>;
+  return <div className="board" />;
 };
 
 export default GameOne;
