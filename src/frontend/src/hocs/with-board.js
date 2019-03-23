@@ -26,5 +26,3 @@ function getCell() {
     color,
   };
 }
-
-console.log(`*** getBoard(),`, getBoard());

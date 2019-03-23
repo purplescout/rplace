@@ -38,3 +38,8 @@
   border: solid black 2px;
   margin: auto;
 }
+
+.tile {
+  width: 2px;
+  height: 2px;
+}
