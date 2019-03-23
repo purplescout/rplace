@@ -22,6 +22,7 @@ function init() {
   return {
     board: getBoard(),
     timer: 120,
+    timerRuning: false,
   };
 }
 
@@ -76,14 +77,25 @@ server.on("connection", (client) => {
     client.emit("setConfiguration", configuration);
   });
 
+  client.on("restartTimer", () => {
+    if (state.timerRuning && state.timer === 0) {
+      state.timerRuning = false;
+      state.timer = 120;
+    }
+
+    emitClients("setTimer", state.timer);
+  });
+
   client.on("startTimer", () => {
+    if (state.timerRuning) return;
+    state.timerRuning = true;
     setInterval(() => {
       if (state.timer <= 0) {
         return;
       }
       state.timer -= 1;
 
-      client.emit("setTimer", state.timer);
+      emitClients("setTimer", state.timer);
     }, 1000);
   });
 
