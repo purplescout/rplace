@@ -1,12 +1,20 @@
-import {compose, withProps} from "recompose";
-import {times} from "lodash";
+import {compose, withState, lifecycle, withProps} from "recompose";
 
-const ROWS = 20;
-const COLS = 20;
+import openSocket from "socket.io-client";
+
+const socket = openSocket("http://localhost:8000");
 
 const withBoard = compose(
+  withState("board", "setBoard", null),
+  lifecycle({
+    componentDidMount() {
+      const {setBoard} = this.props;
+      socket.on("setBoard", setBoard);
+      socket.emit("getBoard");
+    },
+  }),
+  withProps(console.log),
   withProps({
-    board: getBoard(),
     cellClicked: cellClicked,
   })
 );
@@ -14,21 +22,8 @@ const withBoard = compose(
 export default withBoard;
 
 function cellClicked(cell) {
-  console.log(cell);
-}
-
-function getBoard() {
-  return times(ROWS).map(getRow);
-}
-
-function getRow() {
-  return times(COLS).map(getCell);
-}
-
-function getCell() {
-  const color = Math.random() > 0.5 ? "red" : "blue";
-  return {
-    color,
-    id: String(Math.random()),
-  };
+  socket.emit("clickCell", {
+    ...cell,
+    color: "green",
+  });
 }

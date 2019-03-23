@@ -6,18 +6,20 @@ const Board = (props) => {
 
   return (
     <div className="board">
-      {board.map((element) => {
-        return element.map((tile) => {
-          return (
-            <div
-              className="tile"
-              onClick={() => cellClicked(tile)}
-              key={tile.id}
-              style={{backgroundColor: tile.color}}
-            />
-          );
-        });
-      })}
+      {!board && "no board, mofos"}
+      {board &&
+        board.map((element) => {
+          return element.map((tile) => {
+            return (
+              <div
+                className="tile"
+                onClick={() => cellClicked(tile)}
+                key={tile.id}
+                style={{backgroundColor: tile.color}}
+              />
+            );
+          });
+        })}
     </div>
   );
 };
