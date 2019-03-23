@@ -48,3 +48,30 @@
   margin-bottom: -3px;
   cursor: pointer;
 }
+
+.color-group {
+  width: 5%;
+  float: left;
+  display: block;
+}
+.color-block {
+  float: left;
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+.color-block div {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-content {
+  position: relative;
+}
