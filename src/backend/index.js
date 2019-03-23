@@ -13,7 +13,7 @@ const APP_PORT = 3000;
 const LAST_CELL_CLICK = "LAST_CELL_CLICK";
 
 const configuration = {
-  coolDown: 5 * 1000,
+  coolDown: 1 * 1000,
 };
 
 const state = init();

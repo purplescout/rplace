@@ -1,8 +1,9 @@
 import React from "react";
 import withBoard from "../hocs/with-board";
+import styled from "styled-components";
 
 const Board = (props) => {
-  const {board, cellClicked, color} = props;
+  const {board, cellClicked, color: selectedColor} = props;
   let tileSize = 0;
 
   if (board) {
@@ -13,18 +14,19 @@ const Board = (props) => {
     <div className="board">
       {!board && "no board, mofos"}
       {board &&
-        board.map((element) => {
-          return element.map((tile) => {
+        board.map((row) => {
+          return row.map((cell) => {
+            const {color, id} = cell;
+            const disabled = color === selectedColor;
+
             return (
-              <div
-                className="tile"
-                onClick={() => cellClicked(tile, color)}
-                key={tile.id}
-                style={{
-                  backgroundColor: tile.color,
-                  width: tileSize,
-                  height: tileSize,
-                }}
+              <Cell
+                disabled={disabled}
+                hoverColor={selectedColor}
+                color={color}
+                tileSize={tileSize}
+                onClick={() => cellClicked(cell, color)}
+                key={id}
               />
             );
           });
@@ -32,5 +34,20 @@ const Board = (props) => {
     </div>
   );
 };
+
+const Cell = styled.div`
+  width: ${({tileSize}) => tileSize}px;
+  height: ${({tileSize}) => tileSize}px;
+  display: inline-block;
+  margin-bottom: -3px;
+
+  cursor: ${({disabled}) => (disabled ? "not-allowed" : "pointer")};
+
+  background-color: ${({color}) => color};
+
+  &:hover {
+    background-color: ${({hoverColor}) => hoverColor} !important;
+  }
+`;
 
 export default withBoard(Board);
