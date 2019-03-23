@@ -1,6 +1,7 @@
 import {times} from "lodash";
 const ROWS = 10;
 const COLS = 10;
+const DEFAULT_COLOR = "white";
 
 export function getBoard() {
   return times(ROWS).map(getRow);
@@ -22,9 +23,8 @@ function getRow() {
 }
 
 function getCell() {
-  const color = Math.random() > 0.5 ? "red" : "blue";
   return {
-    color,
+    color: DEFAULT_COLOR,
     id: String(Math.random()),
   };
 }
