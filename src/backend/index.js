@@ -2,29 +2,34 @@ import io from "socket.io";
 
 import {getBoard, updateCell} from "./board";
 import {addClient, removeClient, emitClients} from "./clients";
-
+import {flushState, fetchState} from "./state";
 import internalIp from "internal-ip";
 import chalk from "chalk";
 
 const server = io();
 const SOCKET_PORT = 8000;
 const APP_PORT = 3000;
-
 const LAST_CELL_CLICK = "LAST_CELL_CLICK";
 
 const configuration = {
   coolDown: 1 * 1000,
 };
 
-const state = init();
+const oldState = fetchState();
 
-function init() {
+const state = init(oldState);
+
+function init(oldState) {
   return {
     board: getBoard(),
     timer: 120,
     timerRuning: false,
+    ...oldState,
   };
 }
+
+// flush state every 1sec
+flushState(state);
 
 server.on("connection", (client) => {
   addClient(client);
