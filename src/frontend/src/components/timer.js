@@ -1,9 +1,9 @@
 import React from "react";
+import withTimer from "../hocs/with-timer";
 
 const Timer = (props) => {
-  const {time, setTime} = props;
-
-  return <div className="timerFrame" />;
+  const {timer} = props;
+  return <div className="timerFrame">{timer}</div>;
 };
 
-export default Timer;
+export default withTimer(Timer);

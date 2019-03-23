@@ -21,6 +21,7 @@ const state = init();
 function init() {
   return {
     board: getBoard(),
+    timer: 120,
   };
 }
 
@@ -73,6 +74,23 @@ server.on("connection", (client) => {
   client.on("getConfiguration", () => {
     console.log("getConfiguration");
     client.emit("setConfiguration", configuration);
+  });
+
+  client.on("startTimer", () => {
+    setInterval(() => {
+      if (state.timer <= 0) {
+        return;
+      }
+      state.timer -= 1;
+
+      client.emit("setTimer", state.timer);
+    }, 1000);
+  });
+
+  client.on("getTimer", () => {
+    console.log("getTimer");
+
+    client.emit("setTimer", state.timer);
   });
 });
 

@@ -1,26 +1,17 @@
-import {compose, withState, lifecycle, withProps} from "recompose";
+import {compose, withState, lifecycle} from "recompose";
 
 import socket from "../utils/socket";
 
 const withTimer = compose(
-  withState("board", "setBoard", null),
+  withState("timer", "setTimer", null),
   lifecycle({
     componentDidMount() {
-      const {setBoard} = this.props;
-      socket.on("setBoard", setBoard);
-      socket.emit("getBoard");
+      console.log(`*** 1`, 1);
+      const {setTimer} = this.props;
+      socket.on("setTimer", setTimer);
+      socket.emit("getTimer");
     },
-  }),
-  withProps({
-    cellClicked: cellClicked,
   })
 );
 
 export default withTimer;
-
-function cellClicked(cell, color) {
-  socket.emit("clickCell", {
-    ...cell,
-    color,
-  });
-}

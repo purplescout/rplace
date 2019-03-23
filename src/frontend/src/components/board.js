@@ -24,7 +24,7 @@ const Board = (props) => {
               hoverColor={selectedColor}
               color={color}
               tileSize={tileSize}
-              onClick={() => cellClicked(cell, selectedColor)}
+              onClick={() => !disabled && cellClicked(cell, selectedColor)}
               key={id}
             />
           );
@@ -38,7 +38,7 @@ const Cell = styled.div`
   width: ${({tileSize}) => tileSize}px;
   height: ${({tileSize}) => tileSize}px;
   display: inline-block;
-  margin-bottom: -3px;
+  margin-bottom: -6px;
 
   cursor: ${({disabled}) => (disabled ? "not-allowed" : "pointer")};
 
