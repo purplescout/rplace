@@ -1,8 +1,7 @@
 import React from "react";
-import withColorState from "../hocs/with-color-state";
 
 const ColorChart = (props) => {
-  const {selectedColor} = props;
+  const {setColor} = props;
 
   const colorArrayLeftPanel = [
     "#A93226",
@@ -36,7 +35,7 @@ const ColorChart = (props) => {
           return (
             <div
               className="color-block"
-              onClick={() => selectedColor(color)}
+              onClick={() => setColor(color)}
               key={index}
             >
               <div className="js-color" style={{backgroundColor: color}} />
@@ -49,7 +48,7 @@ const ColorChart = (props) => {
           return (
             <div
               className="color-block"
-              onClick={() => selectedColor(color)}
+              onClick={() => setColor(color)}
               key={index}
             >
               <div className="js-color" style={{backgroundColor: color}} />
@@ -61,4 +60,4 @@ const ColorChart = (props) => {
   );
 };
 
-export default withColorState(ColorChart);
+export default ColorChart;

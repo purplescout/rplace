@@ -13,8 +13,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Route exact path="/" render={GameOne} />
-        {/*<Route path="/administration" render={Administration} />*/}
+        <Route exact path="/" render={() => <GameOne />} />
       </div>
     </Router>
   );
