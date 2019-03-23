@@ -4,33 +4,32 @@ import styled from "styled-components";
 
 const Board = (props) => {
   const {board, cellClicked, color: selectedColor} = props;
-  let tileSize = 0;
 
-  if (board) {
-    tileSize = 800 / board.length;
+  if (!board) {
+    return null;
   }
+
+  const tileSize = 800 / board.length;
 
   return (
     <div className="board">
-      {!board && "no board, mofos"}
-      {board &&
-        board.map((row) => {
-          return row.map((cell) => {
-            const {color, id} = cell;
-            const disabled = color === selectedColor;
+      {board.map((row) => {
+        return row.map((cell) => {
+          const {color, id} = cell;
+          const disabled = color === selectedColor;
 
-            return (
-              <Cell
-                disabled={disabled}
-                hoverColor={selectedColor}
-                color={color}
-                tileSize={tileSize}
-                onClick={() => cellClicked(cell, color)}
-                key={id}
-              />
-            );
-          });
-        })}
+          return (
+            <Cell
+              disabled={disabled}
+              hoverColor={selectedColor}
+              color={color}
+              tileSize={tileSize}
+              onClick={() => cellClicked(cell, color)}
+              key={id}
+            />
+          );
+        });
+      })}
     </div>
   );
 };
