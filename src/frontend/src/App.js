@@ -3,6 +3,7 @@ import React from "react";
 import withBoard from "./hocs/with-board";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import GameOne from "./pages/gameone";
+
 import "./App.css";
 //---------------------------------------
 // Imports and constants
