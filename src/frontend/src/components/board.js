@@ -24,7 +24,7 @@ const Board = (props) => {
               hoverColor={selectedColor}
               color={color}
               tileSize={tileSize}
-              onClick={() => cellClicked(cell, selectedColor)}
+              onClick={() => !disabled && cellClicked(cell, selectedColor)}
               key={id}
             />
           );
