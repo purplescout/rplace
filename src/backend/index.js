@@ -22,9 +22,9 @@ const state = init(oldState);
 function init(oldState) {
   return {
     board: getBoard(),
-    timer: 120,
-    timerRuning: false,
     ...oldState,
+    timer: 120,
+    timerRunning: false,
   };
 }
 
@@ -83,17 +83,19 @@ server.on("connection", (client) => {
   });
 
   client.on("restartTimer", () => {
-    if (state.timerRuning && state.timer === 0) {
-      state.timerRuning = false;
+    if (state.timer === 0) {
+      state.timerRunning = false;
       state.timer = 120;
+      state.board = getBoard();
     }
-
+    emitClients("setTimerRunning", state.timerRunning);
     emitClients("setTimer", state.timer);
+    emitClients("setBoard", state.board);
   });
 
   client.on("startTimer", () => {
-    if (state.timerRuning) return;
-    state.timerRuning = true;
+    if (state.timerRunning) return;
+    state.timerRunning = true;
     setInterval(() => {
       if (state.timer <= 0) {
         return;
@@ -101,6 +103,7 @@ server.on("connection", (client) => {
       state.timer -= 1;
 
       emitClients("setTimer", state.timer);
+      emitClients("setTimerRunning", state.timerRunning);
     }, 1000);
   });
 
