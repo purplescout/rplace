@@ -1,32 +1,12 @@
 import React from "react";
 
+import {COLORS} from "../constants";
+import {chunk} from "lodash";
+console.log(`*** COLORS`, COLORS);
 const ColorChart = (props) => {
   const {setColor} = props;
 
-  const colorArrayLeftPanel = [
-    "#A93226",
-    "#CB4335",
-    "#884EA0",
-    "#7D3C98",
-    "#2471A3",
-    "#2E86C1",
-    "#17A589",
-    "#138D75",
-    "#229954",
-    "#28B463",
-  ];
-  const colorArrayRightPanel = [
-    "#D4AC0D",
-    "#D68910",
-    "#CA6F1E",
-    "#BA4A00",
-    "#D0D3D4",
-    "#A6ACAF",
-    "#839192",
-    "#707B7C",
-    "#2E4053",
-    "#273746",
-  ];
+  const [colorArrayLeftPanel, colorArrayRightPanel] = chunk(COLORS, 10);
 
   return (
     <div className="colorchart">
