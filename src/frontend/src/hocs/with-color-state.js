@@ -1,18 +1,5 @@
-import {compose, withProps} from "recompose";
+import {compose, withState} from "recompose";
 
-let color = "white";
-
-const withColorState = compose(
-  withProps({
-    color,
-    selectedColor: selectedColor,
-  })
-);
+const withColorState = compose(withState("color", "setColor", "white"));
 
 export default withColorState;
-
-function selectedColor(c) {
-  console.log(c, "c");
-  color = c;
-  console.log(color, "color");
-}

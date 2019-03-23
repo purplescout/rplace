@@ -6,9 +6,14 @@ import {addClient, removeClient, emitClients} from "./clients";
 const server = io();
 const PORT = 8000;
 
+const LAST_CELL_CLICK = "LAST_CELL_CLICK";
+
+const configuration = {
+  coolDown: 5 * 1000,
+};
+
 const state = init();
 
-console.log(`*** 1`, 1);
 function init() {
   return {
     board: getBoard(),
@@ -23,7 +28,27 @@ server.on("connection", (client) => {
     client.emit("setBoard", state.board);
   });
   client.on("clickCell", (cell) => {
+    if (client[LAST_CELL_CLICK]) {
+      const allowedAgain =
+        client[LAST_CELL_CLICK].getTime() + configuration.coolDown;
+      const now = new Date().getTime();
+      const waitTime = allowedAgain - now;
+      if (waitTime > 0) {
+        console.log("client clicked cell within cool down, ignoring");
+        client.emit("toast", {
+          content: "Cool down, bro",
+          options: {
+            type: "info",
+            autoClose: waitTime,
+          },
+        });
+        return;
+      }
+    }
+    client[LAST_CELL_CLICK] = new Date();
+
     console.log("client clicked cell", cell);
+
     state.board = updateCell(state.board, cell);
 
     emitClients("setBoard", state.board);
@@ -31,6 +56,11 @@ server.on("connection", (client) => {
   client.on("disconnect", function() {
     console.log("client disconnected");
     removeClient(client);
+  });
+
+  client.on("getConfiguration", () => {
+    console.log("getConfiguration");
+    client.emit("setConfiguration", configuration);
   });
 });
 
