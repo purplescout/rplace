@@ -24,5 +24,6 @@ function getCell() {
   const color = Math.random() > 0.5 ? "red" : "blue";
   return {
     color,
+    id: String(Math.random()),
   };
 }
