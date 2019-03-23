@@ -28,3 +28,5 @@ function getCell() {
     id: String(Math.random()),
   };
 }
+
+console.log(1);
