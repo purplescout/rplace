@@ -7,10 +7,15 @@ const COLS = 20;
 const withBoard = compose(
   withProps({
     board: getBoard(),
+    cellClicked: cellClicked,
   })
 );
 
 export default withBoard;
+
+function cellClicked(cell) {
+  console.log(cell);
+}
 
 function getBoard() {
   return times(ROWS).map(getRow);
