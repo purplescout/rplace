@@ -15,6 +15,7 @@ const withToast = compose(
 export default withToast;
 
 const defaultOptions = {
+  pauseOnHover: false,
   // className: 'black-background',
   // bodyClassName: "grow-font-size",
   // progressClassName: 'fancy-progress-bar'
