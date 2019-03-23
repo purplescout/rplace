@@ -1,11 +1,9 @@
-import React, {Component} from "react";
-import logo from "./logo.svg";
+import React from "react";
+import withBoard from "./hocs/with-board";
 import "./App.css";
 
-class App extends Component {
-  render() {
-    return <div className="App">yooo</div>;
-  }
+function App(props) {
+  return <div className="App">yooo</div>;
 }
 
-export default App;
+export default withBoard(App);
