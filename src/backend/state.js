@@ -3,7 +3,7 @@ import fs from "fs";
 const STATE_FILE_PATH = "./state.json";
 export function flushState(state, timeout = 1000) {
   const whiteListed = {
-    ...state.board,
+    board: state.board,
   };
   saveState(whiteListed);
 

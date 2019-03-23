@@ -13,7 +13,7 @@ const LAST_CELL_CLICK = "LAST_CELL_CLICK";
 const CLIENT_CONNECTED = "CLIENT_CONNECTED";
 
 const configuration = {
-  coolDown: 5 * 1000,
+  coolDown: 1 * 1000,
 };
 
 const oldState = fetchState();
@@ -97,17 +97,19 @@ server.on("connection", (client) => {
   });
 
   client.on("restartTimer", () => {
-    if (state.timerRuning && state.timer === 0) {
-      state.timerRuning = false;
+    if (state.timer === 0) {
+      state.timerRunning = false;
       state.timer = 120;
+      state.board = getBoard();
     }
-
+    emitClients("setTimerRunning", state.timerRunning);
     emitClients("setTimer", state.timer);
+    emitClients("setBoard", state.board);
   });
 
   client.on("startTimer", () => {
-    if (state.timerRuning) return;
-    state.timerRuning = true;
+    if (state.timerRunning) return;
+    state.timerRunning = true;
     setInterval(() => {
       if (state.timer <= 0) {
         return;
@@ -115,6 +117,7 @@ server.on("connection", (client) => {
       state.timer -= 1;
 
       emitClients("setTimer", state.timer);
+      emitClients("setTimerRunning", state.timerRunning);
     }, 1000);
   });
 
