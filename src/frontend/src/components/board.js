@@ -2,8 +2,6 @@ import React from "react";
 import withBoard from "../hocs/with-board";
 
 const Board = (props) => {
-  console.log(1, props);
-
   const {board, cellClicked} = props;
 
   return (

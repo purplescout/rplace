@@ -2,7 +2,7 @@ import React from "react";
 
 const ColorChart = () => {
   return (
-    <div className="chart-content row show-sm">
+    <div className="chart-content row show-sm colorchart">
       <div className="color-group">
         <div className="color-block">
           <div

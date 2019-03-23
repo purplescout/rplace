@@ -9,9 +9,9 @@ import ColorChart from "../components/colorChart";
 
 const GameOne = () => {
   return (
-    <div>
-      <Board />
+    <div className="wrapper">
       <ColorChart />
+      <Board />
     </div>
   );
 };
