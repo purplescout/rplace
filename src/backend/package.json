@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "watch": {
+    "start": "src/**/*.js"
+  },
+  "scripts": {
+    "start": "node -r esm ./index.js",
+    "dev": "npm-watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.20",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "npm-watch": "^0.6.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
