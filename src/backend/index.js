@@ -13,7 +13,7 @@ const LAST_CELL_CLICK = "LAST_CELL_CLICK";
 const CLIENT_CONNECTED = "CLIENT_CONNECTED";
 
 const configuration = {
-  coolDown: 1 * 1000,
+  coolDown: 200,
 };
 
 const FLUSH = process.env.FLUSH === "true";
