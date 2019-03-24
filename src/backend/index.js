@@ -16,7 +16,8 @@ const configuration = {
   coolDown: 1 * 1000,
 };
 
-const oldState = fetchState();
+const FLUSH = process.env.FLUSH === "true";
+const oldState = FLUSH ? fetchState() : {};
 
 const state = init(oldState);
 
@@ -33,7 +34,9 @@ function init(oldState) {
 }
 
 // flush state every 1sec
-flushState(state);
+if (FLUSH) {
+  flushState(state);
+}
 
 server.on("connection", (client) => {
   addClient(client);
