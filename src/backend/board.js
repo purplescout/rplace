@@ -1,6 +1,6 @@
 import {times} from "lodash";
-const ROWS = 20;
-const COLS = 20;
+const COLS = 40;
+const ROWS = 30;
 const DEFAULT_COLOR = "white";
 
 export function getBoard() {
