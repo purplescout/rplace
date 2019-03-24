@@ -103,7 +103,7 @@ server.on("connection", (client) => {
 
   client.on("restartTimer", () => {
     if (state.timer === 0) {
-      state.timerRunning = false;
+      state.timerRunning = true;
       state.timer = 120;
       state.board = getBoard();
     }

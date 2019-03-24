@@ -14,9 +14,9 @@ const Board = (props) => {
 
   return (
     <BoardWrapper>
-      {board.map((row) => {
+      {board.map((row, i) => {
         return (
-          <div>
+          <div key={i}>
             {row.map((cell) => {
               const {color, id} = cell;
               const disabled =
