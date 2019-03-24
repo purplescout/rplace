@@ -10,13 +10,13 @@ const Board = (props) => {
     return null;
   }
 
-  const tileSize = window.innerHeight / board.length / 1.4;
+  const tileSize = Math.floor(window.innerHeight / board.length / 1.4);
 
   return (
     <BoardWrapper>
-      {board.map((row) => {
+      {board.map((row, index) => {
         return (
-          <div>
+          <Row key={`row-${index}`} tileSize={tileSize}>
             {row.map((cell) => {
               const {color, id} = cell;
               const disabled =
@@ -33,7 +33,7 @@ const Board = (props) => {
                 />
               );
             })}
-          </div>
+          </Row>
         );
       })}
     </BoardWrapper>
@@ -46,11 +46,16 @@ const BoardWrapper = styled.div`
   margin: 0 20px 20px 20px;
 `;
 
+const Row = styled.div`
+  height: ${({tileSize}) => tileSize}px;
+  margin: 0;
+  padding: 0;
+`;
+
 const Cell = styled.div`
   width: ${({tileSize}) => tileSize}px;
   height: ${({tileSize}) => tileSize}px;
   display: inline-block;
-  margin-bottom: -6px;
 
   cursor: ${({disabled}) => (disabled ? "not-allowed" : "pointer")};
 

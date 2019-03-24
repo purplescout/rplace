@@ -39,9 +39,10 @@ const LeaderBoard = (props) => {
 
 const Bar = styled.div`
   clear: both;
-  border: solid black 1px;
   width: calc(100% - 100px);
   margin: 0 50px;
+  padding: 20px;
+  background: #eee;
 `;
 
 export default withBoard(LeaderBoard);
