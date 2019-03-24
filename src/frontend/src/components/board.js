@@ -5,36 +5,46 @@ import styled from "styled-components";
 
 const Board = (props) => {
   const {board, cellClicked, color: selectedColor, timer, timerRunning} = props;
-  console.log(timerRunning);
+
   if (!board) {
     return null;
   }
 
-  const tileSize = 800 / board.length;
+  const tileSize = window.innerHeight / board.length / 1.4;
 
   return (
-    <div className="board">
+    <BoardWrapper>
       {board.map((row) => {
-        return row.map((cell) => {
-          const {color, id} = cell;
-          const disabled =
-            color === selectedColor || !timerRunning || timer === 0;
+        return (
+          <div>
+            {row.map((cell) => {
+              const {color, id} = cell;
+              const disabled =
+                color === selectedColor || !timerRunning || timer === 0;
 
-          return (
-            <Cell
-              disabled={disabled}
-              hoverColor={selectedColor}
-              color={color}
-              tileSize={tileSize}
-              onClick={() => !disabled && cellClicked(cell, selectedColor)}
-              key={id}
-            />
-          );
-        });
+              return (
+                <Cell
+                  disabled={disabled}
+                  hoverColor={selectedColor}
+                  color={color}
+                  tileSize={tileSize}
+                  onClick={() => !disabled && cellClicked(cell, selectedColor)}
+                  key={id}
+                />
+              );
+            })}
+          </div>
+        );
       })}
-    </div>
+    </BoardWrapper>
   );
 };
+
+const BoardWrapper = styled.div`
+  display: inline-block;
+  border: solid #ddd 2px;
+  margin: 0 20px 20px 20px;
+`;
 
 const Cell = styled.div`
   width: ${({tileSize}) => tileSize}px;

@@ -1,6 +1,7 @@
 import React from "react";
 import {ProgressBar} from "react-bootstrap";
 import withBoard from "../hocs/with-board";
+import styled from "styled-components";
 
 const LeaderBoard = (props) => {
   const {board} = props;
@@ -20,7 +21,7 @@ const LeaderBoard = (props) => {
   }
 
   return (
-    <div className="bar">
+    <Bar>
       <ProgressBar>
         {valueArray.map((val, i) => (
           <ProgressBar
@@ -32,8 +33,15 @@ const LeaderBoard = (props) => {
           />
         ))}
       </ProgressBar>
-    </div>
+    </Bar>
   );
 };
+
+const Bar = styled.div`
+  clear: both;
+  border: solid black 1px;
+  width: calc(100% - 100px);
+  margin: 0 50px;
+`;
 
 export default withBoard(LeaderBoard);

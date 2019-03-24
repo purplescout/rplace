@@ -2,38 +2,22 @@
   text-align: center;
 }
 
-/* .wrapper {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  display: grid;
-} */
+.wrapper {
+  margin: 10px;
+}
 
 .timerFrame {
+  clear: both;
   width: auto;
   margin-top: -100px;
   float: right;
   margin-right: 50px;
 }
 
-.bar {
-  border: solid black 1px;
-  width: 1200px;
-  margin: auto;
-}
-
 .colorchart {
   width: auto;
   margin: auto;
   margin-left: 50px;
-}
-
-.board {
-  width: 804px;
-  height: 804px;
-  border: solid black 2px;
-  margin: auto;
-  margin-top: 35px;
 }
 
 .color-group {

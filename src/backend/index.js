@@ -41,6 +41,8 @@ server.on("connection", (client) => {
   const {address} = client.handshake;
   console.log("New connection from " + address);
 
+  emitClients("setBoard", state.board);
+
   state.users[address] = {
     [CLIENT_CONNECTED]: new Date().getTime(),
   };

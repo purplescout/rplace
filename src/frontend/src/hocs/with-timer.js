@@ -7,8 +7,8 @@ const withTimer = compose(
   withState("timerRunning", "setTimerRunning", null),
   lifecycle({
     componentDidMount() {
-      console.log(`*** 1`, 1);
       const {setTimerRunning, setTimer} = this.props;
+
       socket.on("setTimerRunning", setTimerRunning);
       socket.on("setTimer", setTimer);
       socket.emit("getTimer");
